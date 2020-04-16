@@ -1,0 +1,22 @@
+{
+  "name": "nodeapi",
+  "version": "1.0.0",
+  "description": "Restful Api with express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "./node_modules/.bin/nodemon server.js",
+    "seed": "node ./database/seeder.js --row=10"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.3",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0"
+  }
+}
