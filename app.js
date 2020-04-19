@@ -11,6 +11,6 @@ app.use(bodyParser.json())*/
 
 
 
-app.use ('/books',booksRoutes);
+app.use ('/api',booksRoutes);
 
 module.exports  = app;

@@ -1,23 +1,19 @@
-const connection = require ('../database/connection')
-const getBooksQuery = "SELECT * FROM BOOKS"
-const getBookQuery = "SELECT * FROM BOOKS WHERE id = ?"
-const removeBooksQuery = "DELETE FROM BOOKS WHERE id = ?"
-const addBooksQuery = "INSERT INTO BOOKS SET ?"
-let Books;
+const knex = require ('../database/connection')
 
-const getBooks = async () => {
-Books = await connection.query (getBooksQuery, (err,res,fie) => {
-    if (err) throw err
-    return res
-})
+const getBooks = function () {
+    return knex('books');
 }
 
-console.log(Books)
-
-setTimeout (()=> {
-    console.log (getBooks())
-},1000)
+const getBook = function (id)  {
+return knex('books').where('id', id)
+}
 
 
+module.exports = {
 
-module.exports.model = getBooks
+    Books : {
+        getBooks ,
+        getBook
+    }
+
+}
