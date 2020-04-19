@@ -6,7 +6,7 @@ const model = require (appRoot+'/models/Book')
 
 router.get ('/books', (req,res) => {
     
-   model.Books.getBooks().then(books => {
+   model.Books.getAll().then(books => {
        res.json(books);
    })
 }
@@ -14,7 +14,7 @@ router.get ('/books', (req,res) => {
 
 router.get ('/book/:id', (req,res) => {
 
-    model.Books.getBook(req.params.id).then(book => {
+    model.Books.getOne(req.params.id).then(book => {
         res.json(book)
     })
 
@@ -22,11 +22,16 @@ router.get ('/book/:id', (req,res) => {
 )
 
 router.post ('/book', (req,res) => {
-  
+   model.Books.create(req.body).then (book => {
+    res.json(book)
+   })
 })
 
-router.delete ('/book/:id' , (req,res) => {
 
+router.delete ('/book/:id' , (req,res) => {
+  model.Books.deleteOne(req.params.id).then (book => {
+      res.json(book)
+  })
 }) 
 
 
